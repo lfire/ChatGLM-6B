@@ -7,11 +7,15 @@ from transformers import AutoTokenizer, AutoModel
 import readline
 
 tokenizer = AutoTokenizer.from_pretrained("THUDM/visualglm-6b", trust_remote_code=True)
-model = AutoModel.from_pretrained("THUDM/visualglm-6b", trust_remote_code=True).half().cuda()
+model = (
+    AutoModel.from_pretrained("THUDM/visualglm-6b", trust_remote_code=True)
+    .half()
+    .cuda()
+)
 model = model.eval()
 
 os_name = platform.system()
-clear_command = 'cls' if os_name == 'Windows' else 'clear'
+clear_command = "cls" if os_name == "Windows" else "clear"
 stop_stream = False
 
 
@@ -41,7 +45,9 @@ def main():
         query = "描述这张图片。"
         while True:
             count = 0
-            for response, history in model.stream_chat(tokenizer, image_path, query, history=history):
+            for response, history in model.stream_chat(
+                tokenizer, image_path, query, history=history
+            ):
                 if stop_stream:
                     stop_stream = False
                     break
