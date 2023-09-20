@@ -5,11 +5,13 @@ from transformers import AutoTokenizer, AutoModel
 import readline
 
 tokenizer = AutoTokenizer.from_pretrained("THUDM/chatglm-6b", trust_remote_code=True)
-model = AutoModel.from_pretrained("THUDM/chatglm-6b", trust_remote_code=True).half().cuda()
+model = (
+    AutoModel.from_pretrained("THUDM/chatglm-6b", trust_remote_code=True).half().cuda()
+)
 model = model.eval()
 
 os_name = platform.system()
-clear_command = 'cls' if os_name == 'Windows' else 'clear'
+clear_command = "cls" if os_name == "Windows" else "clear"
 stop_stream = False
 
 
