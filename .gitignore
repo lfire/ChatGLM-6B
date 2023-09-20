@@ -134,4 +134,4 @@ model/
 .idea
 
 .history
-nohub.out
+nohup.out
