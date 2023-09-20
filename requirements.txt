@@ -6,3 +6,6 @@ gradio
 mdtex2html
 sentencepiece
 accelerate
+fastapi
+sse-starlette
+uvicorn
