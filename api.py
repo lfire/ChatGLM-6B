@@ -57,10 +57,13 @@ async def create_item(request: Request):
 
 if __name__ == "__main__":
     tokenizer = AutoTokenizer.from_pretrained(
-        "THUDM/chatglm-6b", trust_remote_code=True
+        # "THUDM/chatglm-6b", trust_remote_code=True
+        "./model/chatglm2-6b-int4",
+        trust_remote_code=True,
     )
     model = (
-        AutoModel.from_pretrained("THUDM/chatglm-6b", trust_remote_code=True)
+        # AutoModel.from_pretrained("THUDM/chatglm-6b", trust_remote_code=True)
+        AutoModel.from_pretrained("./model/chatglm2-6b-int4", trust_remote_code=True)
         .half()
         .cuda()
     )
